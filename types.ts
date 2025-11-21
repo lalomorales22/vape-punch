@@ -1,15 +1,20 @@
+
 export enum LogType {
   VAPE = 'VAPE',
   CRAVING = 'CRAVING'
 }
 
 export interface BioMetrics {
-  stress: number; // 1-10
-  hunger: number; // 1-10
-  stomach: number; // 1-10 (Health)
-  thirst: number; // 1-10
-  waterIntake: number; // Cups today
-  sleepHours: number; // Previous night
+  stress: number;        // 0-100
+  hunger: number;        // 0-100
+  stomach: number;       // 0-100 (Discomfort)
+  thirst: number;        // 0-100
+  energy: number;        // 0-100
+  mood: number;          // 0-100 (0=Depressed, 100=Ecstatic)
+  focus: number;         // 0-100
+  urgeIntensity: number; // 0-100
+  waterIntake: number;   // Cups today (Absolute)
+  sleepHours: number;    // Previous night (Absolute)
 }
 
 export interface LogEntry {

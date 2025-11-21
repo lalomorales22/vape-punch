@@ -1,13 +1,13 @@
+
 import React from 'react';
 
 interface BodyStatusProps {
   hydrationPercent: number; // 0-100
-  fuelPercent: number; // 0-100 (Hunger inverted)
+  fuelPercent: number; // 0-100
 }
 
 const BodyStatus: React.FC<BodyStatusProps> = ({ hydrationPercent, fuelPercent }) => {
   
-  // SVG Path for a simple human silhouette
   const humanPath = "M12 2C13.6569 2 15 3.34315 15 5C15 6.65685 13.6569 8 12 8C10.3431 8 9 6.65685 9 5C9 3.34315 10.3431 2 12 2ZM12 9C14.6667 9 19 10 19 13V15C19 15.5523 18.5523 16 18 16H17V21C17 21.5523 16.5523 22 16 22H14V17H10V22H8C7.44772 22 7 21.5523 7 21V16H6C5.44772 16 5 15.5523 5 15V13C5 10 9.33333 9 12 9Z";
 
   const renderHuman = (percent: number, color: string, label: string) => {

@@ -1,3 +1,4 @@
+
 import { GoogleGenAI, Chat } from "@google/genai";
 import { ChatMessage } from "../types";
 
@@ -22,16 +23,18 @@ class GeminiService {
 
     const systemInstruction = `
       You are "Punch," a sleek, dark-humored, but highly effective anti-vaping coach. 
-      Your goal is to help the user quit vaping by analyzing their habits.
+      Your goal is to help the user quit vaping by analyzing their habits using detailed 0-100 scale biometric data.
       
-      You have access to their tracking data in JSON format. 
-      Data schema: { date, action (VAPE or CRAVING), stress (1-10), hunger (1-10), sleep (hours), thirst (1-10) }.
+      Data schema includes: 
+      - Stress, Hunger, Thirst, Stomach (Pain), Energy, Mood, Focus, Urge Intensity (all 0-100 scale).
+      - Sleep hours.
       
-      Analyze patterns. For example:
-      - If they vape when hunger is high, suggest eating instead.
-      - If they vape when stress is high, suggest breathing exercises.
-      - If they successfully logged a "CRAVING" (meaning they resisted), praise them heavily.
-      - If they logged a "VAPE", be disappointed but constructive. Ask them why.
+      Analyze complex patterns. For example:
+      - High Urge Intensity + Low Energy + High Stress? Suggest rest or meditation, not nicotine.
+      - Vaping when Mood is low vs High? Identify if they vape to cope or to celebrate.
+      - High Focus + Vape? They might use it as a stimulant. Suggest alternative focus tools.
+      
+      If they successfully logged a "CRAVING" (meaning they resisted), praise them heavily and analyze the metrics that made it possible (e.g. "You resisted because your Energy was high").
       
       Keep responses concise, punchy, and raw. Do not be overly polite. Be a supportive drill sergeant.
       
@@ -49,7 +52,6 @@ class GeminiService {
 
   public async sendMessage(text: string): Promise<ChatMessage> {
     if (!this.chatSession) {
-        // Fallback if chat wasn't initialized with context (shouldn't happen in flow)
        await this.startChat("No context provided yet.");
     }
     
@@ -78,7 +80,9 @@ class GeminiService {
       
       const model = this.client.models;
       const prompt = `
-        Analyze this vaping habit data and give me 3 bullet points of deep insight into why the user is vaping and how to stop.
+        Analyze this vaping habit data (0-100 scale metrics).
+        Look for correlations between Urge Intensity and variables like Stress, Energy, or Time.
+        Give me 3 bullet points of deep insight into why the user is vaping and how to stop.
         Data: ${dataContext}
       `;
       
