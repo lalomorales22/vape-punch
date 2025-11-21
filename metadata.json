@@ -1,0 +1,5 @@
+{
+  "name": "VapePunch",
+  "description": "A sleek, dark-themed anti-vaping application that tracks habits, correlates triggers like stress and hunger, and uses AI to provide personalized quitting strategies. Features a unique 3D interaction to physically externalize the urge to vape.",
+  "requestFramePermissions": []
+}

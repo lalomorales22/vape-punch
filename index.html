@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VapePunch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              vape: {
+                dark: '#09090b',
+                accent: '#ef4444', // Red for danger/action
+                success: '#10b981',
+                neon: '#f43f5e',
+              }
+            },
+            animation: {
+              'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+              'violent-shake': 'violentShake 0.4s cubic-bezier(.36,.07,.19,.97) both',
+              'float-up': 'floatUp 1s ease-out forwards',
+              'flutter': 'flutter 1.5s ease-out forwards',
+              'squash': 'squash 0.2s ease-out forwards',
+              'flash': 'flash 0.3s ease-out',
+              'wave': 'wave 2s infinite linear',
+            },
+            keyframes: {
+              shake: {
+                '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+                '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+                '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
+                '40%, 60%': { transform: 'translate3d(4px, 0, 0)' }
+              },
+              violentShake: {
+                '0%': { transform: 'translate(0, 0) scale(1)' },
+                '25%': { transform: 'translate(-5px, 5px) rotate(-5deg) scale(0.95)' },
+                '50%': { transform: 'translate(5px, -2px) rotate(5deg) scale(0.9)' },
+                '75%': { transform: 'translate(-3px, 3px) rotate(-3deg) scale(0.95)' },
+                '100%': { transform: 'translate(0, 0) scale(1)' }
+              },
+              floatUp: {
+                '0%': { transform: 'translateY(0) scale(0.5)', opacity: '0' },
+                '20%': { opacity: '1', transform: 'translateY(-20px) scale(1.2)' },
+                '100%': { transform: 'translateY(-100px) scale(1)', opacity: '0' }
+              },
+              flutter: {
+                '0%': { transform: 'translate(0, 0) scale(0.5)', opacity: '0' },
+                '20%': { opacity: '1', transform: 'translate(var(--tw-translate-x), -40px) scale(1.2)' },
+                '100%': { transform: 'translate(calc(var(--tw-translate-x) * 2), -150px) scale(0.8)', opacity: '0' }
+              },
+              squash: {
+                '0%': { transform: 'scaleY(1)' },
+                '50%': { transform: 'scaleY(0.6) scaleX(1.1) translateY(20px)' },
+                '100%': { transform: 'scaleY(1)' }
+              },
+              flash: {
+                '0%': { opacity: '0.8' },
+                '100%': { opacity: '0' }
+              },
+              wave: {
+                '0%': { transform: 'translateX(-50%)' },
+                '50%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-50%)' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Custom scrollbar for the sleek look */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333; 
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+      }
+      body {
+        background-color: #000;
+        color: #e4e4e7;
+        overflow-x: hidden;
+      }
+      .perspective-1000 {
+        perspective: 1000px;
+      }
+      .transform-style-3d {
+        transform-style: preserve-3d;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "recharts": "https://aistudiocdn.com/recharts@^3.4.1"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
